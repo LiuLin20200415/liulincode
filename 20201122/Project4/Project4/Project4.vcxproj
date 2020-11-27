@@ -10,6 +10,9 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="zuoxuan.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7945D369-6856-4B0D-AC3E-0897F3AFD501}</ProjectGuid>
     <RootNamespace>Project4</RootNamespace>
@@ -64,9 +67,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="旋转.c" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
