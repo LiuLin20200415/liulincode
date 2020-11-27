@@ -11,7 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dizengjuzhen.c" />
+    <ClCompile Include="contact.c" />
+    <ClCompile Include="test.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="contact.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7945D369-6856-4B0D-AC3E-0897F3AFD501}</ProjectGuid>
