@@ -90,7 +90,7 @@ public class Test {
             if (index == -1) {
                 System.out.println("没有找到！");
             }
-            for (int i = index; i < this.usedSize; i++) {
+            for (int i = index; i < this.usedSize-1; i++) {
                 elem[i] = elem[i + 1];
             }
             this.usedSize--;
