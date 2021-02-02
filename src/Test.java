@@ -12,5 +12,9 @@ public class Test {
         System.out.println(biranTree.heightSize(root));
         BTNode a=biranTree.find(root,'A');
         System.out.println(a.val);
+        biranTree.levelOrderTraversal(root);
+        System.out.println(biranTree.isCompleteTree(root));
+        biranTree.preOrderTraversal2(root);
+        biranTree.inOrderTraversal2(root);
     }
 }
