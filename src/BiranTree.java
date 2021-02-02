@@ -1,3 +1,4 @@
+import java.util.*;
 
 class BTNode {
     public char val;
@@ -115,5 +116,88 @@ public class BiranTree {
          find(root.right,val);
          return null;
     }
+    void levelOrderTraversal(BTNode root){
+         if(root==null){
+             return;
+         }
+        Queue<BTNode> queue =new LinkedList<>();
+         queue.add(root);
+         while(!queue.isEmpty()){
+             BTNode cur=queue.poll();
+             System.out.print(cur.val+" ");
+             if(cur.left!=null){
+                 queue.add(cur.left);
+             }
+             if(cur.right!=null){
+                 queue.add(cur.right);
+             }
+         }
+    }
+    boolean isCompleteTree(BTNode root){
+        if(root==null){
+            return true;
+        }
+        Queue<BTNode> queue=new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            BTNode cur=queue.poll();
+            if(cur!=null){
+                queue.add(cur.left);
+                queue.add(cur.right);
+            }else{
+                break;
+            }
+        }
+        //看队列里还有节点没
+        while(!queue.isEmpty()){
+            BTNode cur=queue.peek();
+            if(cur!=null){
+                return false;
+            }else {
+                queue.poll();
+            }
+        }
+        return true;
+    }
+    //前中后序的非递归实现
+    void preOrderTraversal2(BTNode root){
+        if(root==null) {
+            return;
+        }
+        Stack<BTNode> stack=new Stack<>();
+        BTNode cur=root;
+        while(cur!=null||!stack.isEmpty()) {
+            while (cur != null) {
+                stack.add(cur);
+                System.out.print(cur.val+" ");
+                cur = cur.left;
+            }
+            //当cur=null时让cur指向top.right，每次让top=栈顶元素
+            BTNode top = stack.pop();
+            cur = top.right;
+        }
+        System.out.println();
+    }
+    void inOrderTraversal2(BTNode root) {
+        if (root == null) {
+            return;
+        }
+        Stack<BTNode> stack = new Stack<>();
+        BTNode cur = root;
+        while(cur!=null||!stack.isEmpty()) {
+            while (cur != null) {
+                stack.add(cur);
+                cur = cur.left;
+            }
+            BTNode top = stack.pop();
+            System.out.print(top.val+" ");
+            cur = top.right;
+        }
+        System.out.println();
+    }
+    void postOrderTraversal2(BTNode root){
+
+    }
+
 }
 
