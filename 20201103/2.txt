@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<Windows.h>
+void ReverseString(int i,int j,char arr[])
+{
+	if (i >= j)
+	{
+		return ;
+	}
+	else
+	{
+		char temp;
+		temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+		printf("%s\n", arr);
+		ReverseString(i + 1, j - 1, arr);
+
+	}
+}
+int main()
+{
+	char arr[] = "qdadsd";
+	int len = strlen(arr);
+	ReverseString(0,len-1,arr);
+
+	
+	system("pause");
+	return 0;
+}

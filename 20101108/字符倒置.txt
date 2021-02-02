@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<Windows.h>
+void Swap(char* arr1, char* arr2)
+{
+
+	int len = strlen(arr1);
+	int left = 0;
+	int right = len - 1;
+	while (left <= right)
+	{
+		arr2[left] = arr1[right];
+		arr2[right] = arr1[left];
+		left++;
+		right--;
+		printf("%s\n", arr2);
+	}
+}
+	int main()
+{
+		char arr1[] = "sfahsfh";
+		char arr2[] = "*******";
+		Swap(arr1, arr2);
+	
+	system("pause");
+	return 0;
+
+}

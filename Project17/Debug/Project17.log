@@ -1,0 +1,18 @@
+﻿生成启动时间为 2020/11/10 14:56:35。
+     1>项目“d:\Users\DELL\Documents\Visual Studio 2013\刘琳\Project17\Project17\Project17.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt game.c "源.c"
+         源.c
+     1>d:\users\dell\documents\visual studio 2013\刘琳\project17\project17\源.c(52): warning C4013: “time”未定义；假设外部返回 int
+         game.c
+     1>d:\users\dell\documents\visual studio 2013\刘琳\project17\project17\game.c(104): warning C4013: “IsFull”未定义；假设外部返回 int
+         正在生成代码...
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"d:\Users\DELL\Documents\Visual Studio 2013\刘琳\Project17\Debug\Project17.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"d:\Users\DELL\Documents\Visual Studio 2013\刘琳\Project17\Debug\Project17.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"d:\Users\DELL\Documents\Visual Studio 2013\刘琳\Project17\Debug\Project17.lib" /MACHINE:X86 Debug\game.obj
+         "Debug\源.obj"
+         Project17.vcxproj -> d:\Users\DELL\Documents\Visual Studio 2013\刘琳\Project17\Debug\Project17.exe
+     1>已完成生成项目“d:\Users\DELL\Documents\Visual Studio 2013\刘琳\Project17\Project17\Project17.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.03
