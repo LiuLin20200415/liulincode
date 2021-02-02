@@ -16,5 +16,6 @@ public class Test {
         System.out.println(biranTree.isCompleteTree(root));
         biranTree.preOrderTraversal2(root);
         biranTree.inOrderTraversal2(root);
+        biranTree.postOrderTraversal2(root);
     }
 }
