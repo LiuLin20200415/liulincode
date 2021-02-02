@@ -196,7 +196,27 @@ public class BiranTree {
         System.out.println();
     }
     void postOrderTraversal2(BTNode root){
-
+         if(root==null){
+             return;
+         }
+         Stack<BTNode> stack=new Stack<>();
+         BTNode cur=root;
+         BTNode prev=null;
+         while(cur!=null||!stack.isEmpty()){
+             while(cur!=null){
+                 stack.push(cur);
+                 cur=cur.left;
+             }
+             BTNode top=stack.peek();
+             if(top.right==null||top.right==prev){
+                 stack.pop();
+                 System.out.print(top.val+" ");
+                 prev=top;
+             }else{
+                 cur=top.right;
+             }
+         }
+        System.out.println();
     }
 
 }
