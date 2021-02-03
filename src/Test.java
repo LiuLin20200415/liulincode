@@ -1,21 +1,43 @@
-public class Test {
-    public static void main(String[] args) {
-        BiranTree biranTree=new BiranTree();
-        BTNode root=biranTree.createTree();
-        biranTree.size(root);
-        System.out.println(BiranTree.size);
-        System.out.println(biranTree.size1(root));
-        biranTree.leafSize(root);
-        System.out.println(BiranTree.leaf);
-        System.out.println(biranTree.leftSize1(root));
-        System.out.println(biranTree.nodeKSize(root, 3));
-        System.out.println(biranTree.heightSize(root));
-        BTNode a=biranTree.find(root,'A');
-        System.out.println(a.val);
-        biranTree.levelOrderTraversal(root);
-        System.out.println(biranTree.isCompleteTree(root));
-        biranTree.preOrderTraversal2(root);
-        biranTree.inOrderTraversal2(root);
-        biranTree.postOrderTraversal2(root);
+import java.util.*;
+class BTNode{
+    public char val;
+    public BTNode left;
+    public BTNode right;
+    public BTNode(char val){
+        this.val=val;
+    }
+}
+public class Test{
+    public static int i=0;
+    public static BTNode createTree(String str){
+        if(str==null||str.length()==0){
+            return null;
+        }
+        BTNode root=null;
+        if(str.charAt(i)!='#'){
+            root=new BTNode(str.charAt(i));
+            i++;
+            root.left=createTree(str);
+            root.right=createTree(str);
+        }else{
+            i++;
+        }
+        return root;
+    }
+    public static void inorderTree(BTNode root){
+        if(root==null){
+            return;
+        }
+        inorderTree(root.left);
+        System.out.print(root.val+" ");
+        inorderTree(root.right);
+    }
+    public static void main(String[] args){
+        Scanner scan=new Scanner(System.in);
+        while(scan.hasNext()){
+            String str=scan.nextLine();
+            BTNode root=createTree(str);
+            inorderTree(root);
+        }
     }
 }
