@@ -78,4 +78,27 @@ public class Zuoye {
     }
 }
      */
+    /*
+    回文数字
+    class Solution {
+    public boolean isPalindrome(int x) {
+        int z=x;
+        if(x<0){
+            return false;
+        }
+        int a=0;
+        if(x>0&&x<10){
+            return true;
+        }
+        while(x!=0){
+          a=a*10+x%10;
+          x=x/10;
+        }
+        if(a==z){
+            return true;
+        }
+        return false;
+    }
+}
+     */
 }
