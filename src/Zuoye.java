@@ -57,4 +57,25 @@ public class Zuoye {
         int x=20, y=5;
         System.out.println(x+y +""+(x+y)+y);
     }*/
+    /*
+    字典计数法（哈希策略）
+    class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        if(ransomNote==null&&magazine==null){
+            return false;
+        }
+        int[] fag=new int[26];
+        for(int i=0;i<magazine.length();i++){
+            fag[magazine.charAt(i)-'a']++;
+        }
+        for(int j=0;j<ransomNote.length();j++){
+            fag[ransomNote.charAt(j)-'a']--;
+            if(fag[ransomNote.charAt(j)-'a']<0){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+     */
 }
