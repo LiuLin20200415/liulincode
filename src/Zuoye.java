@@ -101,4 +101,67 @@ public class Zuoye {
     }
 }
      */
+    /*
+    final 关键字
+    final修饰的成员变量为基本数据类型，在赋值之后无法改变。
+    当final修饰的成员变量为引用数据类型时，在赋值后其指向地址无法改变，但是对象内容还是可以改变的。
+    final修饰的成员变量在赋值时可以有三种方式。
+    1、在声明时直接赋值。2、在构造器中赋值。3、在初始代码块中进行赋值。
+    final修饰的方法，不允许被子类覆盖。
+    final修饰的类，不能被继承。
+     */
+    /*
+    A：该方法是抽象方法，所以没有方法体，和题目中的method()方法构成了方法重载（方法名一致，参数不一致）
+    B：类体中只能定义变量和方法，不能有其他语句
+    C：方法和类中的方法重复，所以会发生编译异常
+    D：该项方法有abstract修饰，所以是抽象方法，由于抽象方法不能有方法体
+     */
+    /*
+
+    class Solution {
+    public int lengthOfLastWord(String s) {
+        if(s==null||s.length()==0){
+            return 0;
+        }
+        String[] str=s.split(" ");
+        return str.length==0?0:str[str.length-1].length();
+    }
+}
+     */
+    /*
+    给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
+
+    初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。
+    你可以假设 nums1 的空间大小等于 m + n，这样它就有足够的空间保存来自 nums2 的元素。
+
+    class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        if(nums1==null&&nums2==null){
+            return;
+        }
+        int len=nums1.length;
+        while(n>0&&m>0){
+            len=len-1;
+            if(nums1[m-1]<=nums2[n-1]){
+                nums1[len]=nums2[n-1];
+                n--;
+            }else{
+                nums1[len]=nums1[m-1];
+                m--;
+            }
+        }
+        while(n>0){
+            len=len-1;
+            nums1[len]=nums2[n-1];
+            n--;
+        }
+        while(m>0){
+            len=len-1;
+            nums1[len]=nums1[m-1];
+            m--;
+        }
+
+    }
+}
+     */
 }
