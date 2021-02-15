@@ -257,7 +257,83 @@ class Solution {
     }
 }
      */
+    /*
+    给定一个字符串 S，返回 “反转后的” 字符串，其中不是字母的字符都保留在原地，而所有字母的位置发生反转。
 
+
+    class Solution {
+    public String reverseOnlyLetters(String S) {
+
+        int left=0;
+        int right=S.length()-1;
+        char[] arr=S.toCharArray();
+        while(left<right){
+            while(!(Character.isLetter(arr[left]))&&left<right){
+                left++;
+            }
+            while(!(Character.isLetter(arr[right]))&&left<right){
+                right--;
+            }
+            char fag=arr[left];
+            arr[left]=arr[right];
+            arr[right]=fag;
+            left++;
+            right--;
+        }
+        return String.valueOf(arr);
+    }
+}
+
+     */
+    /*
+    给定一个非负整数数组 A，返回一个数组，在该数组中， A 的所有偶数元素之后跟着所有奇数元素。
+    class Solution {
+    public int[] sortArrayByParity(int[] A) {
+
+        if(A==null||A.length==0){
+            return null;
+        }
+        int left=0;
+        int right=A.length-1;
+        int a=0;
+        while(left<=right){
+            if(A[left]%2!=0&&A[right]%2==0){
+                 a=A[left];
+                A[left]=A[right];
+                A[right]=a;
+            }else if(A[left]%2==0){
+                left++;
+            }else if(A[right]%2!=0){
+                right--;
+            }
+        }
+        return A;
+    }
+}
+     */
+    /*
+    给你一个整数数组 nums，请编写一个能够返回数组 “中心索引” 的方法。
+
+数组 中心索引 是数组的一个索引，其左侧所有元素相加的和等于右侧所有元素相加的和。
+
+如果数组不存在中心索引，返回 -1 。如果数组有多个中心索引，应该返回最靠近左边的那一个。
+    class Solution {
+    public int pivotIndex(int[] nums) {
+        int sum=0;
+        for(int i=0;i<nums.length;i++){
+            sum=sum+nums[i];
+        }
+        int a=0;
+        for(int j=0;j<nums.length;j++){
+            a=a+nums[j];
+            if(sum==a*2-nums[j]){
+                return j;
+            }
+        }
+        return -1;
+    }
+}
+     */
 }
 
 
