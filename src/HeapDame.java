@@ -85,4 +85,96 @@ public class HeapDame {
     public boolean isEmpty(){
         return this.usedSize==0;
     }
+    //topK问题前K个最大的元素
+    public static void topK(int[] array,int k){
+        //1.大小为K的小堆
+        PriorityQueue<Integer> minHeap=new PriorityQueue<>(k, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1-o2;
+            }
+        });
+        //2.遍历数组
+        for (int i = 0; i <array.length ; i++) {
+            if(minHeap.size()<k){
+                minHeap.offer(array[i]);
+            }else{
+                int top=minHeap.peek();
+                if(array[i]>top){
+                    minHeap.poll();
+                    minHeap.offer(array[i]);
+                }
+            }
+        }
+        for (int i = 0; i <k ; i++) {
+            System.out.println(minHeap.poll());
+        }
+    }
+    //topK问题前K个最小的元素
+    public static void topK2(int[] array,int k){
+        //先建立一个大小为K的大堆
+        PriorityQueue<Integer> maxHeap=new PriorityQueue<>(k, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2-o1;
+            }
+        });
+        //遍历数组
+        for (int j = 0; j <array.length ; j++) {
+            if(maxHeap.size()<k){
+                maxHeap.offer(array[j]);
+            }else{
+                Integer top=maxHeap.peek();
+                if(top!=null) {
+                    if (array[j] < top) {
+                        maxHeap.poll();
+                        maxHeap.offer(array[j]);
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < k; i++) {
+            System.out.println(maxHeap.poll());
+        }
+    }
+    /*
+    找到和最小的 k 对数字
+    class Solution {
+    public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+        // 大顶堆逆序
+        Queue<int[]> maxHeap = new PriorityQueue<>(k, new Comparator<int[]>() {
+            public int compare(int[] o1, int[] o2) {
+                return getSum(o2) - getSum(o1);
+            }
+        });
+
+        for(int i = 0 ; i < nums1.length ; i ++){
+            for(int j = 0 ; j < nums2.length ; j ++){
+                int[] tmp = new int[]{nums1[i],nums2[j]};
+                if(maxHeap.size() < k)
+                    maxHeap.add(tmp);
+                else{
+                    if(getSum(tmp) < getSum(maxHeap.peek())){
+                        maxHeap.poll();
+                        maxHeap.add(tmp);
+                    }
+                }
+            }
+        }
+        List<List<Integer>> list=new ArrayList<>();
+        //List<Integer> list2 = new ArrayList<>();
+        while(!maxHeap.isEmpty()){
+            int[] array=maxHeap.poll();
+            list.add(Arrays.asList(array[0],array[1]));
+        }
+        return list;
+    }
+
+    public int getSum(int[] o){
+        return o[0] + o[1];
+    }
+}
+     */
+
+
 }
