@@ -63,7 +63,7 @@ public class Paixu {
     //空间O(1)
     //不稳定
     public static void heapSort(int[] array){
-        for (int i =(array.length-1-1)/2 ; i <=0 ; i--) {
+        for (int i =(array.length-1-1)/2 ; i >=0 ; i--) {
             adjustDown(array,i);
         }
     }
