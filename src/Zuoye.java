@@ -334,6 +334,186 @@ class Solution {
     }
 }
      */
+    /*
+
+public class Father {
+    public void say(){
+        System.out.println("father");
+    }
+    public static void action(){
+        System.out.println("爸爸打儿子！");
+    }
+}
+public class Son extends Father{
+    public void say() {
+        System.out.println("son");
+    }
+   public static void action(){
+        System.out.println("打打！");
+    }
+    public static void main(String[] args) {
+        Father f=new Son();
+        f.say();
+        f.action();
+    }
+}
+输出：son
+           爸爸打儿子！
+当调用say方法执行的是Son的方法，也就是重写的say方法
+而当调用action方法时，执行的是father的方法。
+普通方法，运用的是动态单分配，是根据new的类型确定对象，从而确定调用的方法；
+静态方法，运用的是静态多分派，即根据静态类型确定对象，因此不是根据new的类型确定调用的方法
+     */
+           public static void main(String args[]){
+               int num = 10; System.out.println(test(num)); }
+               public static int test(int b){
+               try {
+                   b += 10;
+                   return b;
+               }
+               catch(RuntimeException e){
+
+               }
+               catch(Exception e2){ }
+       finally{ b += 10; return b; } }
+}
+/*
+ 二分法找数字
+o(n/2)
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int[] res=new int[]{-1,-1};
+        if(nums==null||nums.length==0){
+            return res;
+        }
+        int left=0;
+        int right=nums.length-1;
+        while(left<=right){
+            if(nums[left]==target&&nums[right]==target){
+                res[0]=left;
+                res[1]=right;
+                return res;
+            }else if(nums[left]!=target&&nums[right]==target){
+                left++;
+            }else if(nums[left]==target&&nums[right]!=target){
+                right--;
+            }else{
+                left++;
+                right--;
+            }
+        }
+        return res;
+    }
+}
+O(logn)
+class Solution {
+    public int find(int[] nums, int target,boolean tOrf) {
+        int fag=-1;
+        int left=0;
+        int right=nums.length-1;
+        while(left<=right){
+            int mid=left+(right-left)/2;
+            if(nums[mid]>target){
+                right=mid-1;
+            }else if(nums[mid]<target){
+                left=mid+1;
+            }else{
+                fag=mid;
+                if(tOrf){
+                    right=mid-1;
+                }else{
+                    left=mid+1;
+                }
+            }
+        }
+        return fag;
+    }
+    public int[] searchRange(int[] nums, int target) {
+        int[] res=new int[]{-1,-1};
+        if(nums==null||nums.length==0){
+            return res;
+        }
+        res[0]=find(nums,target,true);
+        res[1]=find(nums,target,false);
+        return res;
+    }
 }
 
+/*
+1、把功能相似或相关的类或接口组织在同一个包中，方便类的查找和使用。
+
+2、如同文件夹一样，包也采用了树形目录的存储方式。同一个包中的类名字是不同的，不同的包中的类的名字是可以相同的，当同时调用两个不同包中相同类名的类时，应该加上包名加以区别。因此，包可以避免名字冲突。
+
+3、包也限定了访问权限，拥有包访问权限的类才能访问某个包中的类。
+
+　　Java 使用包（package）这种机制是为了防止命名冲突，访问控制，提供搜索和定位类（class）、接口、枚举（enumerations）和注释（annotation）
+ */
+/*
+回文字符串
+class Solution {
+    public boolean isPalindrome(String s) {
+        if(s==null){
+            return true;
+        }
+        s=s.toLowerCase();
+        int len=s.length();
+        StringBuilder str=new StringBuilder(len);
+        for(int i=0;i<len;i++){
+            if((s.charAt(i)>='0'&&s.charAt(i)<='9')||(s.charAt(i)>='a'&&s.charAt(i)<='z')){
+                str.append(s.charAt(i));
+            }
+        }
+        if(str.toString().equals(str.reverse().toString())){
+            return true;
+        }
+        return false;
+    }
+}
+ */
+/*
+给定一组字符，使用原地算法将其压缩。压缩后的长度必须始终小于或等于原数组长度。数组的每个元素应该
+是长度为1 的字符（不是 int 整数类型）。在完成原地修改输入数组后，返回数组的新长度
+class Solution {
+    public int compress(char[] chars) {
+        if(chars==null||chars.length==0){
+            return 0;
+        }
+        int read=0;
+        int string=0;
+        int write=0;
+        for(read=0;read<chars.length;read++){
+            if(read+1==chars.length||chars[read]!=chars[read+1]){
+                chars[write]=chars[read];
+                write++;
+                if(read>string){
+                    for(char c:(""+(read-string+1)).toCharArray()){
+                        chars[write]=c;
+                        write++;
+                    }
+                }
+                string=read+1;
+            }
+        }
+    return write;
+    }
+}
+ */
+/*
+class Solution {
+    public int findUnsortedSubarray(int[] nums) {
+        int[] arr=nums.clone();
+        Arrays.sort(arr);
+        int start=arr.length;
+        int end=0;
+        for(int i=0;i<nums.length;i++){
+            if(arr[i]!=nums[i]){
+               start=Math.min(start,i);
+               end=Math.max(end,i);
+            }
+        }
+        return ((end-start)>=0?(end-start+1):0);
+
+    }
+}
+ */
 
