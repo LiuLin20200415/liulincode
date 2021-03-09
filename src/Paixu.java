@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Paixu {
     //直接插入
@@ -106,10 +107,14 @@ public class Paixu {
     //时间O(nlogn)
     //空间O(logn)
     //不稳定
+    //当数据有序时，为了避免时间复杂度O(n^2)，三数去中法。
     public static void quickSort(int[] array){
         quick(array,0,array.length-1);
     }
     public static void quick(int[] array,int low,int high){
+        if(array.length<50){
+            insertSortqurt(array,low,high);
+        }
         if(low<high) {
             medianOfThree(array,low,high);
             int piv = pivot(array, low, high);
@@ -133,7 +138,8 @@ public class Paixu {
         return start;
     }
     //快速排序优化
-    //随机选取基准法（就是随机找到后面的一个下标然后和low下表的数据进行交换，最后以low下标交换后的值作为基准
+    //随机选取基准法（就是随机找到后面的一个下标然后和low下表的数据进行交换，
+    // 最后以low下标交换后的值作为基准
     //三数取中法
     public static void medianOfThree(int[] array,int low,int high){
         int mid=(low+high)/2;
@@ -148,12 +154,98 @@ public class Paixu {
             array[low]=array[high];
             array[high]=tmp;
         }
-        if(array[mid]>array[high]){
-            int tmp=array[mid];
-            array[mid]=array[high];
-            array[high]=tmp;
+        if(array[mid]>array[high]) {
+            int tmp = array[mid];
+            array[mid] = array[high];
+            array[high] = tmp;
         }
-
+    }
+    //快排优化
+    //当快速排序在一直执行的过程中，数据肯定会趋于有序，使用插入排序进行优化，插入排序是越有序月快
+    public static void insertSortqurt(int[] array,int low,int high) {
+        for (int i = low+1; i <= high; i++) {
+            int tmp=array[i];
+            int j = i-1;
+            for (; j>=low ; j--) {
+                if(array[j]>tmp){
+                    array[j+1]=array[j];
+                }else{
+                    break;
+                }
+            }
+            array[j+1]=tmp;
+        }
+    }
+    //非递归快排
+    //O(nlogn)
+    //O(n) O(logn)
+    //分治思想
+    public static void quickSort2(int[] array){
+        Stack<Integer> stack=new Stack<>();
+        int low=0;
+        int high=array.length-1;
+        int piv=pivot(array,low,high);
+        if(piv>low+1){
+            stack.push(low);
+            stack.push(piv-1);
+        }
+        if(piv<high-1){
+            stack.push(piv+1);
+            stack.push(high);
+        }
+        while(!stack.isEmpty()){
+            high=stack.pop();
+            low=stack.pop();
+            piv=pivot(array,low,high);
+            if(piv>low+1){
+                stack.push(low);
+                stack.push(piv-1);
+            }
+            if(piv<high-1){
+                stack.push(piv+1);
+                stack.push(high);
+            }
+        }
+    }
+    //归并排序
+    //稳定
+    //O(nlogn)
+    //O(n)
+    public static void merge(int[] array,int start,int mid,int end){
+        int s1=start;
+        int s2=mid+1;
+        int[] tmp=new int[end-start+1];
+        int k=0;
+        while (s1<=mid&&s2<=end){
+            if(array[s1]<=array[s2]){
+                tmp[k++]=array[s1++];
+            }else{
+                tmp[k++]=array[s2++];
+            }
+        }
+        while(s1<=mid){
+            tmp[k++]=array[s1++];
+        }
+        while (s2<=end){
+            tmp[k++]=array[s2++];
+        }
+        for (int i = 0; i < tmp.length; i++) {
+            array[i+start]=tmp[i];
+        }
+    }
+    public static void mergeSortInternal(int[] array,int low,int high){
+        //拆分
+        if(low>=high){
+            return;
+        }
+        int mid=low+(high-low)/2;
+        mergeSortInternal(array,low,mid);
+        mergeSortInternal(array,mid+1,high);
+        //合并
+        merge(array,low,mid,high);
+    }
+    public static void mergeSort(int[] array){
+        mergeSortInternal(array,0,array.length-1);
     }
     public static void main(String[] args) {
         int[] array={10,3,2,7,19,78,65,127};
@@ -170,5 +262,10 @@ public class Paixu {
         System.out.println(Arrays.toString(array));
         quickSort(array);
         System.out.println(Arrays.toString(array));
+        quickSort2(array);
+        System.out.println(Arrays.toString(array));
+        mergeSort(array);
+        System.out.println(Arrays.toString(array));
+
     }
 }
