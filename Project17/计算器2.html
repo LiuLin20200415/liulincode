@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算器2</title>
+    <script src="C:\Users\DELL\Documents\Tencent Files\2425875237\FileRecv\jquery-1.9.1.min.js">
+
+    </script>
+    <script>
+        function fun(type){
+            var num1=jQuery("#num1");
+            var num2=jQuery("#num2");
+            if(type==1){
+                if(num1.val()==""||num2.val()==""){
+                    alert("请输入数字");
+                    num1.focus();
+                    return false;
+                }
+                jQuery("#num3").val(parseInt(num1.val())+parseInt(num2.val()));
+            }else if(type==2){
+                if(num1.val()==""||num2.val()==""){
+                    alert("请输入数字");
+                    num1.focus();
+                    return false;
+                }
+                jQuery("#num3").val(parseInt(num1.val())-parseInt(num2.val()));
+            }else if(type==3){
+                if(num1.val()==""||num2.val()==""){
+                    alert("请输入数字");
+                    num1.focus();
+                    return false;
+                }
+                jQuery("#num3").val(parseInt(num1.val())*parseInt(num2.val()));
+            }else{
+                if(confirm("是否清空？"));
+                num1.val("");
+                num2.val("");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div style ="font-size:40px;margin-top: 40px;margin-left: 400px;color: blueviolet;">
+        计算器
+    </div>
+    <div style="margin-top: 20px;margin-left: 335px;color: blue;"> 
+        数字一：<input id="num1" type="number" placeholder="请输入第一个数字">
+    </div>
+    <div style="margin-top: 20px;margin-left: 335px;color: blue;"> 
+        数字二：<input id="num2" type="number" placeholder="请输入第二个数字">
+        
+    </div>
+    <div style="margin-top: 40px;margin-left: 360px;">
+        <input type="button" onclick="fun(1)" value="相加">
+        <input type="button" onclick="fun(2)" value="相减">
+        <input type="button" onclick="fun(3)" value="相乘">
+        <input type="button" onclick="fun(4)" value="清空">
+        <br>
+        <br>
+        <input id="num3" type="text" placeholder="计算结果为">
+    </div>
+</body>
+</html>
